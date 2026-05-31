@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Riyas — Engineer</title>
+<title>Mohamed Riyas — AI/ML Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -154,11 +154,23 @@ h1.hero-h .accent{
 .hero-sub{
   font-size:1.05rem;font-weight:300;
   color:var(--text2);
-  max-width:520px;
+  max-width:560px;
   line-height:1.75;
   margin-bottom:2.5rem;
 }
 .hero-sub strong{color:var(--text);font-weight:500}
+.hero-pills{
+  display:flex;flex-wrap:wrap;gap:0.5rem;
+  margin-bottom:2rem;
+}
+.hero-pill{
+  font-size:0.72rem;font-weight:500;
+  letter-spacing:0.06em;
+  color:var(--blue);
+  background:var(--blue-dim);
+  border:1px solid rgba(79,142,247,0.2);
+  padding:0.25rem 0.7rem;border-radius:999px;
+}
 .hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:4rem}
 .btn-primary{
   display:inline-flex;align-items:center;gap:0.5rem;
@@ -344,6 +356,61 @@ h2.s-title{
   transition:color 0.2s,border-color 0.2s;
 }
 .proj-card:hover .stack span{color:var(--text2);border-color:var(--border-h)}
+
+/* ── RESEARCH ── */
+.research-card{
+  background:var(--bg1);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:2rem;
+  margin-top:3rem;
+  position:relative;
+  overflow:hidden;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.5s ease,transform 0.5s ease,background 0.2s;
+}
+.research-card.visible{opacity:1;transform:translateY(0)}
+.research-card:hover{background:var(--bg2)}
+.research-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(to right,var(--amber),transparent);
+}
+.research-tag{
+  display:inline-block;
+  font-size:0.68rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--amber);
+  background:rgba(245,166,35,0.08);
+  border:1px solid rgba(245,166,35,0.2);
+  padding:0.2rem 0.6rem;border-radius:4px;
+  margin-bottom:1rem;
+}
+.research-title{
+  font-family:var(--display);
+  font-size:1.05rem;font-weight:700;
+  color:var(--text);
+  letter-spacing:-0.02em;
+  line-height:1.25;
+  margin-bottom:0.5rem;
+}
+.research-venue{font-size:0.78rem;color:var(--text3);margin-bottom:1rem}
+.research-bullets{list-style:none}
+.research-bullets li{
+  font-size:0.85rem;color:var(--text2);
+  padding:0.2rem 0 0.2rem 1rem;
+  position:relative;
+  line-height:1.55;
+}
+.research-bullets li::before{
+  content:'';
+  position:absolute;left:0;top:0.62em;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:var(--amber);
+  opacity:0.5;
+}
 
 /* ── SKILLS ── */
 .skills-grid{
@@ -556,7 +623,7 @@ footer{
   <div class="hero-glow"></div>
   <div class="hero-status">
     <span class="status-dot"></span>
-    Open to opportunities · Kochi ,Kerala
+    Open to opportunities · Kochi, Kerala
   </div>
   <h1 class="hero-h">
     <span class="dim">Hi, I'm</span><br>
@@ -564,8 +631,15 @@ footer{
     <span class="accent">Riyas.</span>
   </h1>
   <p class="hero-sub">
-    <strong>Computer Engineer</strong> with experience in IT infrastructure, cybersecurity operations and machine learning. Currently pursuing <strong>M.Tech in AI &amp; ML</strong> at Amrita Vishwa Vidyapeetham.
+    <strong>AI/ML Engineer</strong> building end-to-end intelligent systems — from fine-tuning large language models and deploying <strong>RAG pipelines</strong> to applied ML for real-world impact. Currently pursuing <strong>M.Tech in AI &amp; ML</strong> at Amrita Vishwa Vidyapeetham.
   </p>
+  <div class="hero-pills">
+    <span class="hero-pill">LLM Fine-Tuning</span>
+    <span class="hero-pill">RAG Pipelines</span>
+    <span class="hero-pill">PyTorch · HuggingFace</span>
+    <span class="hero-pill">FastAPI</span>
+    <span class="hero-pill">Vector Databases</span>
+  </div>
   <div class="hero-actions">
     <a href="#contact" class="btn-primary">
       Get in touch
@@ -575,24 +649,7 @@ footer{
       View my work
     </a>
   </div>
-  <div class="hero-stats">
-    <div>
-      <div class="h-stat-num">3<span>+</span></div>
-      <div class="h-stat-label">Years experience</div>
-    </div>
-    <div>
-      <div class="h-stat-num">8</div>
-      <div class="h-stat-label">Certifications</div>
-    </div>
-    <div>
-      <div class="h-stat-num">0.978</div>
-      <div class="h-stat-label">Best ROC-AUC</div>
-    </div>
-    <div>
-      <div class="h-stat-num">500<span>+</span></div>
-      <div class="h-stat-label">AD users managed</div>
-    </div>
-  </div>
+
 </section>
 
 <!-- EXPERIENCE -->
@@ -606,12 +663,11 @@ footer{
 
       <div class="exp-item">
         <div>
-          <div class="exp-role">IT Operator</div>
-          <div class="exp-org">GFH Financial Harbour · Bahrain</div>
+          <div class="exp-role">Software / System Intern</div>
+          <div class="exp-org">Enlist Resources · Bahrain</div>
           <ul class="exp-bullets">
-            <li>Generated and validated End-of-Day financial transaction reports using T24 (Temunos) core banking</li>
-            <li>Pulled and processed daily data from Oracle, ran COB and EOD services</li>
-            <li>Ensured transaction accuracy and system consistency during daily settlement cycles</li>
+            <li>Debugged data inconsistencies in T24 core banking transaction workflows — developed systematic log analysis and root-cause tracing skills directly applicable to ML debugging and data pipeline validation</li>
+            <li>Automated transaction integrity checks via scripts, reducing manual audit effort — hands-on experience with data quality and validation at production scale</li>
           </ul>
         </div>
         <div class="exp-period">Jan 2025 – Jun 2025</div>
@@ -622,12 +678,11 @@ footer{
           <div class="exp-role">System Administrator (Intern)</div>
           <div class="exp-org">Foulath Holdings · Bahrain</div>
           <ul class="exp-bullets">
-            <li>Administered Active Directory for 500+ enterprise users — user/group management, permissions, group policies, print services</li>
+            <li>Managed IT infrastructure for 500+ users — practical exposure to Linux administration and enterprise system management relevant to deploying ML services in production</li>
+            <li>Administered Active Directory — user/group management, permissions, group policies, print services</li>
             <li>Managed patch cycles via ManageEngine; handled hardware imaging and asset tracking</li>
             <li>Configured CISCO MERAKI access controls and Microsoft Exchange mail-flow policies</li>
             <li>SOC analysis using IBM QRadar SIEM — log analysis, email forensics, SOAR workflows</li>
-            <li>Vulnerability assessments via Nessus and Trend Micro; investigated phishing emails and prepared reports</li>
-            <li>Web security testing using Burp Suite Pro for information gathering</li>
           </ul>
         </div>
         <div class="exp-period">Sep – Nov 2024</div>
@@ -641,7 +696,6 @@ footer{
             <li>Daily technical support for laptops, VOIP phones, tablets, printers, and enterprise software</li>
             <li>Remote troubleshooting via AnyDesk; managed AD user accounts and access control</li>
             <li>Network performance monitoring and connectivity troubleshooting</li>
-            <li>Installed and configured Windows systems and desktop software</li>
           </ul>
         </div>
         <div class="exp-period">Aug – Sep 2024</div>
@@ -661,34 +715,50 @@ footer{
     <div class="projects-grid">
 
       <div class="proj-card">
-        <div class="proj-tag">Machine Learning · Fintech</div>
-        <div class="proj-title">Credit Card Fraud Detection System</div>
-        <p class="proj-desc">Production-ready fraud detection API built on 284,807 real-world financial transactions. Tackled extreme class imbalance (0.17% fraud rate) using SMOTE and deployed a FastAPI REST scoring service with real-time inference.</p>
+        <div class="proj-tag">LLM · GenAI · AgriTech</div>
+        <div class="proj-title">Kerala Farmer's Companion</div>
+        <p class="proj-desc">Multilingual LLM application for 140M+ Kerala smallholder farmers. Hybrid pipeline combining a fine-tuned Mistral-7B for crop advisory and pest detection, XGBoost for yield prediction, and live weather/market APIs as structured context injection.</p>
         <div class="proj-metrics">
-          <span class="proj-metric">ROC-AUC 0.978</span>
-          <span class="proj-metric">84% fraud recall</span>
-          <span class="proj-metric">67% precision</span>
+          <span class="proj-metric">140M+ target users</span>
+          <span class="proj-metric">Multilingual NLP</span>
+          <span class="proj-metric">LoRA fine-tuned</span>
         </div>
         <div class="stack">
-          <span>Python</span><span>XGBoost</span><span>FastAPI</span><span>Scikit-learn</span><span>SMOTE</span><span>Pandas</span><span>Joblib</span>
+          <span>Mistral-7B</span><span>LoRA/PEFT</span><span>FAISS</span><span>XGBoost</span><span>FastAPI</span><span>React</span><span>SQLite</span>
         </div>
       </div>
 
       <div class="proj-card">
-        <div class="proj-tag">Machine Learning · Risk</div>
-        <div class="proj-title">Credit Risk Scoring System</div>
-        <p class="proj-desc">End-to-end credit default prediction model on 150,000 borrower records. Handled missing financial data via median imputation, stratified train-test splits, and feature scaling pipeline.</p>
+        <div class="proj-tag">RAG · NLP · Fleet Ops</div>
+        <div class="proj-title">Fleet Intelligence Assistant</div>
+        <p class="proj-desc">Hybrid RAG query engine allowing operations teams to query fleet data in plain English — replacing complex SQL dashboards. Smart routing layer sends factual queries to SQL and fuzzy queries to FAISS vector search, measurably reducing hallucinations.</p>
         <div class="proj-metrics">
-          <span class="proj-metric">ROC-AUC 0.84</span>
-          <span class="proj-metric">150K records</span>
-          <span class="proj-metric">SMOTE balanced</span>
+          <span class="proj-metric">&lt;2s response latency</span>
+          <span class="proj-metric">NER entity extraction</span>
+          <span class="proj-metric">Hybrid SQL + FAISS</span>
         </div>
         <div class="stack">
-          <span>Python</span><span>XGBoost</span><span>Scikit-learn</span><span>SMOTE</span><span>Pandas</span>
+          <span>Python</span><span>FAISS</span><span>OpenAI / local LLM</span><span>SQLite</span><span>Streamlit</span>
         </div>
       </div>
 
     </div>
+
+    <!-- RESEARCH -->
+    <div class="reveal" style="margin-top:3rem">
+      <div class="s-label">Research</div>
+    </div>
+    <div class="research-card">
+      <div class="research-tag">Published Research · 2025</div>
+      <div class="research-title">Digital Twin-Driven Network Architecture for QoE-Aware Video Conferencing</div>
+      <div class="research-venue">Amrita Vishwa Vidyapeetham</div>
+      <ul class="research-bullets">
+        <li>Designed an AI-driven closed-loop control system using Digital Twin models to dynamically predict and allocate bandwidth for 90 concurrent users on a 10 Mbps constrained backhaul</li>
+        <li>Trained traffic classification models on Mininet-emulated network flows; used predictions to drive real-time bandwidth slicing via Ryu SDN controller</li>
+        <li>Achieved 40–60% improvement in QoE (latency, jitter, packet loss) under congestion versus baseline FIFO — demonstrating AI-in-the-loop network optimization</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
@@ -701,45 +771,43 @@ footer{
     </div>
     <div class="skills-grid">
       <div class="skill-cat">
-        <div class="skill-cat-title">Security & SOC</div>
-        <span class="skill-tag">IBM QRadar SIEM</span>
-        <span class="skill-tag">Nessus</span>
-        <span class="skill-tag">Trend Micro</span>
-        <span class="skill-tag">Burp Suite Pro</span>
-        <span class="skill-tag">SOAR</span>
-        <span class="skill-tag">Splunk</span>
-        <span class="skill-tag">Threat Intelligence</span>
-        <span class="skill-tag">Phishing Analysis</span>
-        <span class="skill-tag">CVE Research</span>
-        <span class="skill-tag">IPS / Web Proxy</span>
+        <div class="skill-cat-title">LLM & GenAI</div>
+        <span class="skill-tag">RAG Pipelines</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">LoRA / PEFT</span>
+        <span class="skill-tag">HuggingFace Transformers</span>
+        <span class="skill-tag">FAISS</span>
+        <span class="skill-tag">LangChain</span>
+        <span class="skill-tag">Hallucination Mitigation</span>
+        <span class="skill-tag">Context Window Mgmt</span>
+        <span class="skill-tag">NLP / NER</span>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-title">Infrastructure & Systems</div>
-        <span class="skill-tag">Active Directory</span>
-        <span class="skill-tag">Windows Server 2022</span>
-        <span class="skill-tag">Microsoft Exchange</span>
-        <span class="skill-tag">CISCO MERAKI</span>
-        <span class="skill-tag">ManageEngine</span>
-        <span class="skill-tag">O365 Admin</span>
-        <span class="skill-tag">T24 Core Banking</span>
-        <span class="skill-tag">Oracle</span>
-        <span class="skill-tag">AnyDesk / Remote</span>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-title">AI / ML & Dev</div>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">XGBoost</span>
+        <div class="skill-cat-title">ML & Modelling</div>
+        <span class="skill-tag">PyTorch</span>
         <span class="skill-tag">Scikit-learn</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">SMOTE</span>
-        <span class="skill-tag">NLP</span>
+        <span class="skill-tag">XGBoost</span>
         <span class="skill-tag">Deep Learning</span>
-        <span class="skill-tag">C++</span>
-        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Supervised Learning</span>
+        <span class="skill-tag">Feature Engineering</span>
+        <span class="skill-tag">SMOTE</span>
+        <span class="skill-tag">Model Evaluation</span>
+        <span class="skill-tag">Computer Vision</span>
+        <span class="skill-tag">Reinforcement Learning</span>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">MLOps & Dev</div>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">FastAPI</span>
         <span class="skill-tag">Docker</span>
+        <span class="skill-tag">REST API Design</span>
+        <span class="skill-tag">SQLite / SQL</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Linux</span>
         <span class="skill-tag">AWS / Azure</span>
-        <span class="skill-tag">Rust</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Streamlit</span>
       </div>
     </div>
 
@@ -765,7 +833,7 @@ footer{
     <div class="contact-inner reveal">
       <div class="contact-left">
         <h2>Let's build<br>something <span>together.</span></h2>
-        <p>Open to IT engineering, cybersecurity, and AI/ML roles. I bring security instincts, infrastructure depth, and growing ML expertise to every team I join.</p>
+        <p>Open to AI/ML engineering, LLM application, and applied research roles. I bring end-to-end ML skills — from fine-tuning models to production deployment — plus infrastructure depth to every team I join.</p>
         <div class="contact-links">
           <a href="mailto:riyasibnnizar@gmail.com" class="c-link">
             <div class="c-link-icon">
@@ -791,7 +859,7 @@ footer{
             </div>
             <div>
               <div class="c-link-label">Location</div>
-              <div class="c-link-val">Kochi,Kerala</div>
+              <div class="c-link-val">Kochi, Kerala</div>
             </div>
           </div>
         </div>
@@ -805,15 +873,16 @@ footer{
           <div class="avatar">MR</div>
           <div>
             <div class="profile-name">Mohamed Riyas</div>
-            <div class="profile-title-small">Computer Engineer · AI/ML</div>
+            <div class="profile-title-small">AI/ML Engineer · LLM Applications</div>
           </div>
         </div>
         <div class="info-rows">
           <div class="info-row"><span class="info-key">Nationality</span><span class="info-val">Indian</span></div>
-          <div class="info-row"><span class="info-key">Education</span><span class="info-val">M.Tech AIML (2025–27)</span></div>
-          <div class="info-row"><span class="info-key">B.Tech</span><span class="info-val">CSE, 2020–2024</span></div>
-          <div class="info-row"><span class="info-key">Certifications</span><span class="info-val">8 (OPSWAT + Cisco)</span></div>
-          <div class="info-row"><span class="info-key">Languages</span><span class="info-val">English, Malayalam,Hindi ,Tamil</span></div>
+          <div class="info-row"><span class="info-key">Education</span><span class="info-val">M.Tech AI/ML (2025–27)</span></div>
+          <div class="info-row"><span class="info-key">B.Tech</span><span class="info-val">CSE, APJ Abdul Kalam TU</span></div>
+          <div class="info-row"><span class="info-key">Focus</span><span class="info-val">LLMs, RL, Computer Vision</span></div>
+          <div class="info-row"><span class="info-key">LeetCode</span><span class="info-val">60+ solved (target 200+)</span></div>
+          <div class="info-row"><span class="info-key">Languages</span><span class="info-val">English, Malayalam, Hindi, Tamil</span></div>
           <div class="info-row"><span class="info-key">Status</span><span class="info-val" style="color:var(--green)">Open to work</span></div>
         </div>
       </div>
@@ -836,7 +905,7 @@ const io=new IntersectionObserver(entries=>{
     if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}
   });
 },{threshold:0.1});
-document.querySelectorAll('.reveal,.exp-item,.proj-card,.skill-cat').forEach((el,i)=>{
+document.querySelectorAll('.reveal,.exp-item,.proj-card,.skill-cat,.research-card').forEach((el,i)=>{
   el.style.transitionDelay=el.classList.contains('exp-item')||el.classList.contains('proj-card')||el.classList.contains('skill-cat')
     ? `${i%4*0.08}s` : '0s';
   io.observe(el);
